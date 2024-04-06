@@ -13,8 +13,8 @@ In our project, we'll be delving into an intriguing dataset: Amazon Fine Food re
 
 ## Instructions to load dataset
 Download the dataset from [https://www.kaggle.com/datasets/snap/amazon-fine-food-reviews].
-* 1. Save the downloaded file in the same directory as this script.
-* 2. Ensure that the file name matches the one specified in the code
+*  Save the downloaded file in the same directory as this script.
+*  Ensure that the file name matches the one specified in the code
 
 ## Contents
 
