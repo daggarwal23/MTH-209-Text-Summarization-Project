@@ -23,4 +23,4 @@ Download the dataset from [https://www.kaggle.com/datasets/snap/amazon-fine-food
 
 ## Instruction to run the code:
 
--   If while running the code you run into `there is no package called ....` error then kindly download the packages from `Required_Packages.txt` file first .
+-   If while running the code you run into `there is no module called ....` error then kindly download the packages from `Required_Packages.txt` file first .
