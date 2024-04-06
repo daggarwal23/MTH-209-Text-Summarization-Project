@@ -13,7 +13,7 @@ In our project, we'll be delving into an intriguing dataset: Amazon Fine Food re
 
 ## Contents
 
--   **Text_Summarization :** Contains all the code, preprocessing, analysis, model fitting.
+-   **Text_Summarization.ipynb :** Contains all the code, preprocessing, analysis, model fitting.
 
 ## Instructions to load dataset
 Download the dataset from [https://www.kaggle.com/datasets/snap/amazon-fine-food-reviews].
