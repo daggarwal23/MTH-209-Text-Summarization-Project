@@ -1,0 +1,56 @@
+Good Morning Sir,
+
+We are thrilled to present the result of semester of dedicated work: our project titled "Abstractive Text Summarization using LSTMs." Today, we will walk you through why we embarked on this project, the methods we used, and the math behind our approach.
+
+To start, let's talk about why we chose this project. In today's world, we're flooded with text. But just extracting sentences isn't enough. We need to understand the deeper meaning and context. That's where abstractive text summarization comes in. It's about creating short, clear summaries that truly capture the essence of the text.
+
+So in order to make abstractive summaries we need to understand how do we make summaries out of a given text. Our brain reads a text extracts the semantic meaning in the text and somehow maps the meaning on our vocabulary and creates a summary. 
+
+Since we are people who like math, we would like to believe that there is some function in our brain that takes the text as an input and gives the summary as output. Now the next natural question is , "How can we find this function?"
+
+The answer is "We cannot or at least we do not know" So we did the next best thing , approximated the function.
+Now in mathematical literature there are various methods to approximate a function such as Taylor Series Approximation , Fourier Series Approximation and so on. 
+However these approximations require the function to be differentiable , which is a big assumption since we do not even know if this type of function even exists.
+So we used Universal Approximation Theorem, which states that if a function is continuous and bounded on a compact set K then for e > 0 there exists a neural network g(x) with finite neurons such that the absolute difference between f and g is less than e.
+
+So we assumed that our summary making function is continuous and bounded on a compact set.
+
+Since, we are stats people we like to work with numbers, and just like we map events in a sample space to real line through the concept of random variable, on the same basic principle we need to find a way to map these texts or words to vector of numbers.
+Now the first way that comes to mind is put 1 if a certain word is present in the text and 0 otherwise however this way of mapping does not capture the core meaning of the text for example 
+1. cat sat on the mat
+2. mat sat on the cat
+they have totally different meanings but this method maps them to the same vector.
+So we added Word2vec model, originally introduced by a group of google researchers in 2014 which capture the semantic meanings of the text.
+
+Now we have vectors of summaries and vectors of texts and we needed to find a good approximation of the function between them.
+First we tried basic Neural Network Structures, however they were treating the vectors of words as independent which is not the case , so we needed to find a way that treats these vectors as dependent and finds a way to model these dynamics.
+
+So upon researching more we found Recurrent Neural Networks , originally introduced in 1975 by a group of researchers. A Recurrent Neural Network (RNN) is a type of artificial neural network designed to process sequential data by retaining information about past inputs through recurrent connections. Unlike traditional feedforward neural networks, RNNs have connections that loop back on themselves, allowing them to maintain a form of memory across time steps. This enables RNNs to capture temporal dependencies and sequential patterns in data, making them well-suited for tasks such as natural language processing. At each time step, an RNN takes an input along with information from the previous time step, processes it through a hidden layer, and produces an output. The recurrent connections allow the network to dynamically adapt its internal state based on the input sequence, enabling it to learn from historical context and make predictions about future elements in the sequence.
+
+Now while fitting a RNN, we found that the parameters of the RNN model were either diverging to infinity or converging t0 0. Now turns out, this is a common problem, which was introduced in 1997 by a group of mathematics enthusiasts and they also introduced its solution as Long Short Term Memory (LSTM) model.
+
+The intuition behind the LSTM architecture is to create an additional module in a neural network that learns when to remember and when to forget information. In other words, the network effectively learns which information might be needed later on in a sequence and when that information is no longer needed.
+
+Since, our input is a sequence of words i.e. text and output is also a sequence of words i.e. summaries so we have used seq2seq model architecture to approximate the summarization function. This model architecture comprises of two components Encoder Layer and Decoder Layer. 
+
+In the encoder layer, each LSTM reads the entire input sequence word by word. At each step, it processes the current word and updates its understanding of the sentence. This happens at every step, and the model keeps track of the context of the sentence as it goes. Finally, the output of the model is a single vector that can be used to summarizes the input text's meaning.
+
+In Decoder Layer we again have LSTMS which use the output of the encoder layer to sequentially predict the probabilities of the next word given the previous word and the word with the maximum probability will be chosen as the next word in the summary .
+
+** We can add some points here cleaning and metrics **
+
+About Our Model So using the same above architecture we have fitted our model using Sparse Categorical Cross Entropy as our loss function and 
+
+Now there are some limitations to this approach one of the major one is we can not deal large paragraphs . Now you might ask why 
+Since we are mapping a single word to a 500x1 vector so we have 500 no for each words in our setup and if we have n words in a particular text then it turns out to be a matrix of size 500xn which is quite a large matrix for computational point of view.
+
+Now coming to the future scope and how we can further improve our model 
+1. We can solve the problem of large texts using the concept of attention first introduced in the research paper "Attention Is All You Need" published in 2017 by some google researcher but since due to time constraints and knowledge constraints we haven't implemented that.
+2. 
+
+
+
+
+
+
+
